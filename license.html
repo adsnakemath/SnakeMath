@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>License — SnakeMath</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050810;
+    --panel: #0d1117;
+    --border: rgba(0,255,136,.15);
+    --green: #00ff88;
+    --blue: #00d4ff;
+    --dim: #5a6a7a;
+    --text: #c8d8e8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,255,136,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,136,.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -20%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(ellipse, rgba(0,255,136,.04) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+    animation: floatGlow 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes floatGlow {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(5%, 8%); }
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 48px;
+    animation: fadeDown .6s ease both;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo-mark {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(0,255,136,.15), rgba(0,212,255,.1));
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .brand {
+    font-family: 'Orbitron', sans-serif;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+
+  /* Hero */
+  .hero {
+    margin-bottom: 40px;
+    animation: fadeUp .7s .1s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .doc-type {
+    font-family: 'Orbitron', sans-serif;
+    font-size: .55rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--green);
+    opacity: .7;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    font-weight: 900;
+    line-height: 1.15;
+    background: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+
+  .effective {
+    font-size: .72rem;
+    color: var(--dim);
+    font-style: italic;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--green) 0%, transparent 100%);
+    margin: 32px 0;
+    opacity: .3;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 32px;
+    animation: fadeUp .6s ease both;
+  }
+
+  .section:nth-child(1) { animation-delay: .15s; }
+  .section:nth-child(2) { animation-delay: .22s; }
+  .section:nth-child(3) { animation-delay: .29s; }
+  .section:nth-child(4) { animation-delay: .36s; }
+  .section:nth-child(5) { animation-delay: .43s; }
+
+  .section-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: .5rem;
+    letter-spacing: 2px;
+    color: var(--green);
+    opacity: .5;
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: .5px;
+  }
+
+  p {
+    font-size: .78rem;
+    line-height: 1.9;
+    color: #8a9ab0;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 8px 0 10px;
+  }
+
+  ul li {
+    font-size: .78rem;
+    line-height: 1.8;
+    color: #8a9ab0;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    opacity: .6;
+  }
+
+  .highlight {
+    background: rgba(0,255,136,.05);
+    border: 1px solid rgba(0,255,136,.12);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0;
+  }
+
+  .highlight p { margin: 0; color: var(--text); }
+
+  /* Footer */
+  .footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,.05);
+    text-align: center;
+    font-size: .65rem;
+    color: var(--dim);
+    letter-spacing: .5px;
+  }
+
+  .footer a { color: var(--green); text-decoration: none; opacity: .7; }
+  .footer a:hover { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="logo-mark">🐍</div>
+    <div class="brand">SnakeMath · Legal</div>
+  </div>
+
+  <div class="hero">
+    <div class="doc-type">Document · License</div>
+    <h1>License Agreement</h1>
+    <div class="effective">Effective Date: April 28, 2026 · Version 1.0</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-num">01 —</div>
+    <h2>Overview</h2>
+    <p>SnakeMath ("the App") is a web-based play-to-earn game developed and operated by the SnakeMath team. This License Agreement governs your access to and use of the App, its content, software, and services.</p>
+    <p>By accessing or using SnakeMath, you agree to be bound by the terms of this License.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">02 —</div>
+    <h2>Grant of License</h2>
+    <p>Subject to your compliance with this Agreement, SnakeMath grants you a limited, non-exclusive, non-transferable, revocable license to:</p>
+    <ul>
+      <li>Access and use the App for personal, non-commercial purposes</li>
+      <li>Participate in gameplay, leaderboards, and prize pools</li>
+      <li>Connect your Solana wallet to receive SKR token rewards</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-num">03 —</div>
+    <h2>Restrictions</h2>
+    <p>You may not, directly or indirectly:</p>
+    <ul>
+      <li>Copy, modify, or distribute the App's source code or assets</li>
+      <li>Reverse engineer, decompile, or disassemble any part of the App</li>
+      <li>Use bots, scripts, or automated tools to gain unfair advantage</li>
+      <li>Exploit bugs or vulnerabilities to manipulate game rewards</li>
+      <li>Sell, sublicense, or commercially exploit your access to the App</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-num">04 —</div>
+    <h2>Intellectual Property</h2>
+    <p>All content within SnakeMath — including but not limited to code, graphics, game mechanics, achievement designs, and branding — is the exclusive property of the SnakeMath team and is protected under applicable intellectual property laws.</p>
+    <div class="highlight">
+      <p>SKR tokens distributed as rewards are utility tokens within the Solana ecosystem. Their distribution does not constitute a transfer of ownership or intellectual property rights.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-num">05 —</div>
+    <h2>Token Distribution</h2>
+    <p>SnakeMath distributes SKR tokens to users as in-game rewards through the weekly prize pool system. This distribution is subject to:</p>
+    <ul>
+      <li>Minimum withdrawal thresholds and applicable fees</li>
+      <li>Verified Solana wallet registration</li>
+      <li>Fair play compliance — any suspected manipulation may result in reward forfeiture</li>
+      <li>Processing time of 1–2 business days per withdrawal request</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-num">06 —</div>
+    <h2>Termination</h2>
+    <p>This License is effective until terminated. SnakeMath reserves the right to suspend or terminate your access at any time, without notice, for conduct that violates this Agreement or is harmful to other users, the platform, or third parties.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">07 —</div>
+    <h2>Disclaimer</h2>
+    <p>The App is provided "as is" without warranties of any kind. SnakeMath does not guarantee uninterrupted service, token value, or specific prize pool amounts. Participation in reward systems involves inherent risk associated with blockchain technology.</p>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 SnakeMath · ad.snakemath@gmail.com</p>
+    <p style="margin-top:6px">Questions? Contact: ad.snakemath@gmail.com</p>
+  </div>
+
+</div>
+</body>
+</html>
