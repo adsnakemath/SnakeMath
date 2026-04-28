@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copyright — SnakeMath</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050810;
+    --panel: #0d1117;
+    --border: rgba(0,212,255,.15);
+    --blue: #00d4ff;
+    --green: #00ff88;
+    --dim: #5a6a7a;
+    --text: #c8d8e8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -30%;
+    right: -20%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(ellipse, rgba(0,212,255,.04) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+    animation: floatGlow 9s ease-in-out infinite alternate;
+  }
+
+  @keyframes floatGlow {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(-5%, 6%); }
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 48px;
+    animation: fadeDown .6s ease both;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo-mark {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(0,212,255,.12), rgba(0,255,136,.08));
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .brand {
+    font-family: 'Orbitron', sans-serif;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+
+  .hero {
+    margin-bottom: 40px;
+    animation: fadeUp .7s .1s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .doc-type {
+    font-family: 'Orbitron', sans-serif;
+    font-size: .55rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--blue);
+    opacity: .7;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    font-weight: 900;
+    line-height: 1.15;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+
+  .effective {
+    font-size: .72rem;
+    color: var(--dim);
+    font-style: italic;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue) 0%, transparent 100%);
+    margin: 32px 0;
+    opacity: .3;
+  }
+
+  /* Owner card */
+  .owner-card {
+    background: rgba(0,212,255,.04);
+    border: 1px solid rgba(0,212,255,.15);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    animation: fadeUp .6s .2s ease both;
+  }
+
+  .owner-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .owner-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: .5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    opacity: .6;
+    margin-bottom: 4px;
+  }
+
+  .owner-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: .95rem;
+    font-weight: 900;
+    color: var(--text);
+  }
+
+  .owner-url {
+    font-size: .68rem;
+    color: var(--dim);
+    margin-top: 3px;
+  }
+
+  .owner-url a { color: var(--blue); text-decoration: none; }
+  .owner-url a:hover { text-decoration: underline; }
+
+  .section {
+    margin-bottom: 32px;
+    animation: fadeUp .6s ease both;
+  }
+
+  .section:nth-child(1) { animation-delay: .2s; }
+  .section:nth-child(2) { animation-delay: .27s; }
+  .section:nth-child(3) { animation-delay: .34s; }
+  .section:nth-child(4) { animation-delay: .41s; }
+
+  .section-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: .5rem;
+    letter-spacing: 2px;
+    color: var(--blue);
+    opacity: .5;
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: .5px;
+  }
+
+  p {
+    font-size: .78rem;
+    line-height: 1.9;
+    color: #8a9ab0;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 8px 0 10px;
+  }
+
+  ul li {
+    font-size: .78rem;
+    line-height: 1.8;
+    color: #8a9ab0;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    opacity: .6;
+  }
+
+  .highlight {
+    background: rgba(0,212,255,.04);
+    border: 1px solid rgba(0,212,255,.12);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0;
+  }
+
+  .highlight p { margin: 0; color: var(--text); }
+
+  .year-badge {
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: .6rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    background: rgba(0,212,255,.08);
+    border: 1px solid rgba(0,212,255,.2);
+    border-radius: 20px;
+    color: var(--blue);
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+
+  .footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,.05);
+    text-align: center;
+    font-size: .65rem;
+    color: var(--dim);
+    letter-spacing: .5px;
+  }
+
+  .footer a { color: var(--blue); text-decoration: none; opacity: .7; }
+  .footer a:hover { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="logo-mark">🐍</div>
+    <div class="brand">SnakeMath · Legal</div>
+  </div>
+
+  <div class="hero">
+    <div class="doc-type">Document · Copyright</div>
+    <h1>Copyright Notice</h1>
+    <div class="effective">Effective Date: April 28, 2026 · Version 1.0</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="owner-card">
+    <div class="owner-icon">©</div>
+    <div>
+      <div class="owner-label">Intellectual Property Owner</div>
+      <div class="owner-name">SnakeMath</div>
+      <div class="owner-url">ad.snakemath@gmail.com</div>
+    </div>
+  </div>
+
+  <div class="year-badge">© 2026 SnakeMath. All Rights Reserved.</div>
+
+  <div class="section">
+    <div class="section-num">01 —</div>
+    <h2>Ownership Declaration</h2>
+    <p>All content, software, and intellectual property comprising the SnakeMath application are owned exclusively by the SnakeMath development team. This includes, without limitation:</p>
+    <ul>
+      <li>Game engine, mechanics, and source code</li>
+      <li>Visual design, UI components, and achievement artwork</li>
+      <li>SnakeMath branding, name, logo, and identity</li>
+      <li>Game data, leaderboard systems, and reward structures</li>
+      <li>All written content, copy, and documentation</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-num">02 —</div>
+    <h2>Legal Compliance</h2>
+    <p>SnakeMath operates in good faith compliance with applicable intellectual property laws. The App:</p>
+    <ul>
+      <li>Does not reproduce or distribute third-party copyrighted material without authorization</li>
+      <li>Uses open-source libraries under their respective licenses</li>
+      <li>Integrates Solana blockchain infrastructure under its public protocol terms</li>
+      <li>Complies with Solana dApp Store publishing requirements and guidelines</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-num">03 —</div>
+    <h2>Third-Party Acknowledgements</h2>
+    <p>SnakeMath gratefully acknowledges the use of the following:</p>
+    <ul>
+      <li>Solana blockchain protocol — open public infrastructure</li>
+      <li>Google Fonts (Orbitron, Space Mono) — SIL Open Font License</li>
+      <li>PHP and associated open-source server technologies</li>
+    </ul>
+    <div class="highlight">
+      <p>All third-party trademarks, including "Solana" and "SKR," remain the property of their respective owners. SnakeMath claims no ownership over these marks.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-num">04 —</div>
+    <h2>Prohibited Uses</h2>
+    <p>No portion of SnakeMath's proprietary content may be reproduced, republished, distributed, transmitted, displayed, or commercially exploited in any form without explicit prior written permission from the SnakeMath team.</p>
+    <p>Unauthorized use constitutes copyright infringement and may result in legal action.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">05 —</div>
+    <h2>Contact</h2>
+    <p>For copyright inquiries, licensing requests, or to report infringement, contact us at <strong>ad.snakemath@gmail.com</strong>.</p>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 SnakeMath · </p>
+    <p style="margin-top:6px">Contact: ad.snakemath@gmail.com</p>
+  </div>
+
+</div>
+</body>
+</html>
